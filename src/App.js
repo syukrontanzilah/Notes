@@ -1,28 +1,47 @@
-import React, { Component } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import Router from './router';
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import { BlogProvider } from './context/BlogContext';
+import List from './pages/List';
+import Show from './pages/Show';
+import Tulis from './pages/Tulis';
+
+
+const Stack = createStackNavigator()
 
 const App = () => {
 
   return (
     <NavigationContainer>
-      <Router />
+      <Stack.Navigator>
+        <Stack.Screen 
+        name="List" 
+        component={List} 
+        options={{
+          title:"Catatan",
+          headerTitleAlign:'center',
+          // headerRight:()=>{
+          //   return <Ionicons
+          //   name="create"
+          //   size={30}
+          //   color="green"
+          //   style={{marginRight:10}}/>
+          // }
+        }}
+        />
+        <Stack.Screen name="Show" component={Show} />
+        <Stack.Screen name="Tulis" component={Tulis} />
+      </Stack.Navigator>
     </NavigationContainer>
   )
-
 }
 
-const styles = StyleSheet.create({
+export default ()=>{
+  return<BlogProvider>
+    <App/>
+  </BlogProvider>
+}
 
-});
 
-export default App;
 
 
