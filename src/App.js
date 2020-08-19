@@ -29,7 +29,14 @@ const App = () => {
           // }
         }}
         />
-        <Stack.Screen name="Show" component={Show} />
+        <Stack.Screen 
+        name="Show" 
+        component={Show}
+        options={{
+          title:"Catatan saya",
+          headerTitleAlign:'center',
+        }}
+         />
         <Stack.Screen name="Tulis" component={Tulis} />
       </Stack.Navigator>
     </NavigationContainer>
